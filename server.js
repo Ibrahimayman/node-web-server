@@ -1,11 +1,10 @@
-/**
- * Created by Ibrahim Ayman on 13/06/2017.
- */
+/**Created by Ibrahim Ayman on 13/06/2017. */
 
 var express = require("express");
 var hbs = require("hbs");
 var app = express();
 var fs = require('fs');
+const port = process.env.port || 3000;
 
 //******************************************************
 app.set('view engine', 'hbs'); // handelbarjs library
@@ -32,9 +31,9 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(function (req, res, next) {
-   res.render("maintenance.hbs");
-});
+// app.use(function (req, res, next) {
+//     res.render("maintenance.hbs");
+// });
 
 // must be after app.use Methods.
 app.use(express.static(__dirname + '/public'));
@@ -72,6 +71,6 @@ app.get('/bad', function (req, res) {
 });
 
 
-app.listen(3000, function () {
-    console.log('server is up on port : 3000');
+app.listen(port, function () {
+    console.log('server is up on port : ' + port);
 });
